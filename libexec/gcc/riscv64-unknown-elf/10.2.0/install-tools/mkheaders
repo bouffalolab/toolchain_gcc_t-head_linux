@@ -53,7 +53,7 @@ if [ x$1 != x ] ; then
   prefix=$1
   shift
 else
-  prefix=/ldhome/software/toolsbuild/slave2/workspace/Toolchain/release-riscv-0/build-riscv-gcc-riscv64-unknown-elf/Xuantie-900-gcc-elf-newlib-x86_64-V2.0.3.1-xialf
+  prefix=/ldhome/software/toolsbuild/slave2/workspace/Toolchain/release-riscv-0/build-riscv-gcc-riscv64-unknown-elf/Xuantie-900-gcc-elf-newlib-x86_64-V2.0.3
 fi
 
 # Allow for alternate isysroot in which to find headers

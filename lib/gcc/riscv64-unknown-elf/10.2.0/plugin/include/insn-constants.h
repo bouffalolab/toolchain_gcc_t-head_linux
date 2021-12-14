@@ -5,24 +5,37 @@
 #define GCC_INSN_CONSTANTS_H
 
 #define S10_REGNUM 26
+#define A4_REGNUM 14
 #define S1_REGNUM 9
+#define T2_REGNUM 7
 #define NORMAL_RETURN 0
 #define SIBCALL_RETURN 1
 #define FRM_REGNUM 106
+#define A1_REGNUM 11
+#define T4_REGNUM 29
 #define S7_REGNUM 23
+#define A7_REGNUM 17
 #define S6_REGNUM 22
+#define A6_REGNUM 16
 #define S3_REGNUM 19
+#define A3_REGNUM 13
 #define S0_REGNUM 8
 #define GP_REGNUM 3
+#define A0_REGNUM 10
+#define T6_REGNUM 31
 #define S9_REGNUM 25
 #define EXCEPTION_RETURN 2
+#define T3_REGNUM 28
 #define S4_REGNUM 20
 #define S11_REGNUM 27
 #define S5_REGNUM 21
+#define A5_REGNUM 15
 #define T0_REGNUM 5
 #define RETURN_ADDR_REGNUM 1
 #define S2_REGNUM 18
 #define VTYPE_REGNUM 107
+#define A2_REGNUM 12
+#define T5_REGNUM 30
 #define S8_REGNUM 24
 #define T1_REGNUM 6
 

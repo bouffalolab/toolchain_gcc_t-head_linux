@@ -7,7 +7,7 @@ OUTPUT_FORMAT("elf32-littleriscv", "elf32-littleriscv",
 	      "elf32-littleriscv")
 OUTPUT_ARCH(riscv)
 ENTRY(_start)
-SEARCH_DIR("/ldhome/software/toolsbuild/slave2/workspace/Toolchain/release-riscv-0/build-riscv-gcc-riscv64-unknown-elf/Xuantie-900-gcc-elf-newlib-x86_64-V2.0.3.1-xialf/riscv64-unknown-elf/lib");
+SEARCH_DIR("/ldhome/software/toolsbuild/slave2/workspace/Toolchain/release-riscv-0/build-riscv-gcc-riscv64-unknown-elf/Xuantie-900-gcc-elf-newlib-x86_64-V2.0.3/riscv64-unknown-elf/lib");
 SECTIONS
 {
   PROVIDE (__executable_start = SEGMENT_START("text-segment", 0x10000)); . = SEGMENT_START("text-segment", 0x10000) + SIZEOF_HEADERS;

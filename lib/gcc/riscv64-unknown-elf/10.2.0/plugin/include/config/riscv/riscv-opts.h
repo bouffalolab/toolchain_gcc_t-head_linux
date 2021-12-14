@@ -51,6 +51,7 @@ extern enum riscv_vlen_bits riscv_vlen;
 enum riscv_microarchitecture_type {
   generic,
   sifive_7,
+  c910,
   c906v
 };
 extern enum riscv_microarchitecture_type riscv_microarchitecture;
