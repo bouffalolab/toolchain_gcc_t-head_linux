@@ -1,5 +1,5 @@
 /* Generated automatically by the program 'build/genpreds'
-   from the machine description file '/ldhome/software/toolsbuild/slave2/workspace/Toolchain/release-riscv-0/./source/riscv/riscv-gcc/gcc/config/riscv/riscv.md'.  */
+   from the machine description file '/mnt/ssd/jenkins_iotsw/slave/workspace/Toolchain/build-gnu-riscv/./source/riscv/riscv-gcc/gcc/config/riscv/riscv.md'.  */
 
 #ifndef GCC_TM_PREDS_H
 #define GCC_TM_PREDS_H
@@ -12,6 +12,7 @@ extern int pmode_register_operand (rtx, machine_mode);
 extern int scratch_operand (rtx, machine_mode);
 extern int immediate_operand (rtx, machine_mode);
 extern int const_int_operand (rtx, machine_mode);
+extern int const_scalar_int_operand (rtx, machine_mode);
 extern int const_double_operand (rtx, machine_mode);
 extern int nonimmediate_operand (rtx, machine_mode);
 extern int nonmemory_operand (rtx, machine_mode);
@@ -30,7 +31,12 @@ extern int csr_operand (rtx, machine_mode);
 extern int sle_operand (rtx, machine_mode);
 extern int sleu_operand (rtx, machine_mode);
 extern int const_0_operand (rtx, machine_mode);
+extern int const_1_operand (rtx, machine_mode);
 extern int reg_or_0_operand (rtx, machine_mode);
+extern int reg_or_mem_operand (rtx, machine_mode);
+extern int uimm5_operand (rtx, machine_mode);
+extern int reg_or_uimm5_operand (rtx, machine_mode);
+extern int reg_or_simm5_operand (rtx, machine_mode);
 extern int branch_on_bit_operand (rtx, machine_mode);
 extern int splittable_const_int_operand (rtx, machine_mode);
 extern int p2m1_shift_operand (rtx, machine_mode);
@@ -42,12 +48,39 @@ extern int plt_symbolic_operand (rtx, machine_mode);
 extern int call_insn_operand (rtx, machine_mode);
 extern int modular_operator (rtx, machine_mode);
 extern int equality_operator (rtx, machine_mode);
+extern int ltge_operator (rtx, machine_mode);
+extern int vector_comparison_operator (rtx, machine_mode);
 extern int order_operator (rtx, machine_mode);
 extern int signed_order_operator (rtx, machine_mode);
 extern int fp_native_comparison (rtx, machine_mode);
 extern int fp_scc_comparison (rtx, machine_mode);
 extern int fp_branch_comparison (rtx, machine_mode);
 extern int gpr_save_operation (rtx, machine_mode);
+extern int const_poly_int_operand (rtx, machine_mode);
+extern int const_vector_int_operand (rtx, machine_mode);
+extern int const_vector_int_0_operand (rtx, machine_mode);
+extern int const_vector_int_1_operand (rtx, machine_mode);
+extern int vector_arith_operand (rtx, machine_mode);
+extern int neg_const_vector_int_operand (rtx, machine_mode);
+extern int neg_vector_arith_operand (rtx, machine_mode);
+extern int vector_move_operand (rtx, machine_mode);
+extern int const_vector_shift_operand (rtx, machine_mode);
+extern int vector_shift_operand (rtx, machine_mode);
+extern int ltge_const_vector_int_operand (rtx, machine_mode);
+extern int ltge_vector_arith_operand (rtx, machine_mode);
+extern int shift_b_operand (rtx, machine_mode);
+extern int shift_h_operand (rtx, machine_mode);
+extern int shift_w_operand (rtx, machine_mode);
+extern int shift_d_operand (rtx, machine_mode);
+extern int imm6u_operand (rtx, machine_mode);
+extern int pwr_3_operand (rtx, machine_mode);
+extern int pwr_7_operand (rtx, machine_mode);
+extern int insv32_operand (rtx, machine_mode);
+extern int insv64_operand (rtx, machine_mode);
+extern int single_bit_mask_operand (rtx, machine_mode);
+extern int not_single_bit_mask_operand (rtx, machine_mode);
+extern int const31_operand (rtx, machine_mode);
+extern int const63_operand (rtx, machine_mode);
 extern int const_int_or_reg_operand (rtx, machine_mode);
 extern int const_uns16_arith_operand (rtx, machine_mode);
 extern int uns16_arith_operand (rtx, machine_mode);
@@ -57,14 +90,10 @@ extern int riscv_sync_memory_operand (rtx, machine_mode);
 extern int riscv_mem_pair_operand (rtx, machine_mode);
 extern int const_Pi_operand (rtx, machine_mode);
 extern int const_Pj_operand (rtx, machine_mode);
-extern int fp16_less_or_equal_cmp (rtx, machine_mode);
-extern int const_us3_operand (rtx, machine_mode);
-extern int const_us2_operand (rtx, machine_mode);
 extern int const_K_operand (rtx, machine_mode);
 extern int const_M_operand (rtx, machine_mode);
 extern int nonimmediate_or_0_operand (rtx, machine_mode);
-extern int vmask_mode_register_operand (rtx, machine_mode);
-extern int riscv_vector_mem_operand (rtx, machine_mode);
+extern int riscv_mem_classic_operand (rtx, machine_mode);
 #endif /* HAVE_MACHINE_MODES */
 
 #define CONSTRAINT_NUM_DEFINED_P 1
@@ -75,9 +104,10 @@ enum constraint_num
   CONSTRAINT_f,
   CONSTRAINT_j,
   CONSTRAINT_l,
-  CONSTRAINT_v,
-  CONSTRAINT_u,
-  CONSTRAINT_w,
+  CONSTRAINT_vr,
+  CONSTRAINT_vd,
+  CONSTRAINT_vm,
+  CONSTRAINT_vt,
   CONSTRAINT_Qrf,
   CONSTRAINT_Qrx,
   CONSTRAINT_I,
@@ -89,20 +119,30 @@ enum constraint_num
   CONSTRAINT_m,
   CONSTRAINT_o,
   CONSTRAINT_A,
+  CONSTRAINT_Qmx,
   CONSTRAINT_Qmr,
   CONSTRAINT_Qmu,
   CONSTRAINT_Qmb,
   CONSTRAINT_Qma,
   CONSTRAINT_Qmp,
-  CONSTRAINT_Qmv,
   CONSTRAINT_p,
+  CONSTRAINT_Wsa,
+  CONSTRAINT_Wsb,
+  CONSTRAINT_Wsh,
+  CONSTRAINT_Wsw,
+  CONSTRAINT_Wsd,
+  CONSTRAINT_Ws5,
   CONSTRAINT_G,
   CONSTRAINT_S,
   CONSTRAINT_U,
+  CONSTRAINT_vc,
+  CONSTRAINT_vi,
+  CONSTRAINT_vj,
+  CONSTRAINT_vk,
+  CONSTRAINT_v0,
+  CONSTRAINT_v1,
+  CONSTRAINT_vp,
   CONSTRAINT_QcL,
-  CONSTRAINT_Y,
-  CONSTRAINT_Z,
-  CONSTRAINT_Qvz,
   CONSTRAINT_V,
   CONSTRAINT__l,
   CONSTRAINT__g,
@@ -151,7 +191,7 @@ insn_extra_register_constraint (enum constraint_num c)
 static inline bool
 insn_extra_memory_constraint (enum constraint_num c)
 {
-  return c >= CONSTRAINT_m && c <= CONSTRAINT_Qmv;
+  return c >= CONSTRAINT_m && c <= CONSTRAINT_Qmp;
 }
 
 static inline bool
@@ -170,7 +210,7 @@ static inline void
 insn_extra_constraint_allows_reg_mem (enum constraint_num c,
 				      bool *allows_reg, bool *allows_mem)
 {
-  if (c >= CONSTRAINT_G && c <= CONSTRAINT_Qvz)
+  if (c >= CONSTRAINT_Wsa && c <= CONSTRAINT_QcL)
     return;
   if (c >= CONSTRAINT_V && c <= CONSTRAINT__g)
     {
@@ -189,6 +229,8 @@ insn_constraint_len (char fc, const char *str ATTRIBUTE_UNUSED)
     {
     case 'P': return 2;
     case 'Q': return 3;
+    case 'W': return 3;
+    case 'v': return 2;
     default: break;
     }
   return 1;
@@ -225,7 +267,7 @@ get_constraint_type (enum constraint_num c)
 {
   if (c >= CONSTRAINT_p)
     {
-      if (c >= CONSTRAINT_G)
+      if (c >= CONSTRAINT_Wsa)
         return CT_FIXED_FORM;
       return CT_ADDRESS;
     }

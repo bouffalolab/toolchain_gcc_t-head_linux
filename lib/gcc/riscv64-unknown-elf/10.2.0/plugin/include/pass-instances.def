@@ -336,6 +336,7 @@ along with GCC; see the file COPYING3.  If not see
       NEXT_PASS (pass_fold_builtins, 1);
       NEXT_PASS (pass_optimize_widening_mul, 1);
       NEXT_PASS (pass_store_merging, 1);
+NEXT_PASS (pass_load_merging, 1);
       NEXT_PASS (pass_tail_calls, 1);
       /* If DCE is not run before checking for uninitialized uses,
 	 we may get false warnings (e.g., testsuite/gcc.dg/uninit-5.c).
@@ -414,7 +415,6 @@ along with GCC; see the file COPYING3.  If not see
       NEXT_PASS (pass_lower_subreg, 1);
       NEXT_PASS (pass_df_initialize_opt, 1);
       NEXT_PASS (pass_cse, 1);
-NEXT_PASS (pass_delete_redundancy_fsrm, 1);
       NEXT_PASS (pass_rtl_fwprop, 1);
       NEXT_PASS (pass_rtl_cprop, 1);
       NEXT_PASS (pass_rtl_pre, 1);
@@ -458,6 +458,7 @@ NEXT_PASS (pass_shorten_memrefs, 1);
       NEXT_PASS (pass_match_asm_constraints, 1);
       NEXT_PASS (pass_sms, 1);
       NEXT_PASS (pass_live_range_shrinkage, 1);
+NEXT_PASS (pass_xthead_dvsetvl, 1);
       NEXT_PASS (pass_sched, 1);
       NEXT_PASS (pass_early_remat, 1);
       NEXT_PASS (pass_ira, 1);
@@ -467,10 +468,12 @@ NEXT_PASS (pass_shorten_memrefs, 1);
 	  NEXT_PASS (pass_postreload_cse, 1);
 	  NEXT_PASS (pass_gcse2, 1);
 	  NEXT_PASS (pass_split_after_reload, 1);
+NEXT_PASS (pass_delete_redundancy_sext1, 1);
 	  NEXT_PASS (pass_ree, 1);
-NEXT_PASS (pass_delete_redundancy_sext, 1);
+NEXT_PASS (pass_delete_redundancy_sext2, 1);
 	  NEXT_PASS (pass_compare_elim_after_reload, 1);
 	  NEXT_PASS (pass_thread_prologue_and_epilogue, 1);
+NEXT_PASS (pass_xthead_dread_vlenb, 1);
 	  NEXT_PASS (pass_rtl_dse2, 1);
 	  NEXT_PASS (pass_stack_adjustments, 1);
 	  NEXT_PASS (pass_jump2, 1);
@@ -479,12 +482,15 @@ NEXT_PASS (pass_delete_redundancy_sext, 1);
 	  NEXT_PASS (pass_peephole2, 1);
 	  NEXT_PASS (pass_if_after_reload, 1);
 	  NEXT_PASS (pass_regrename, 1);
+NEXT_PASS (pass_xthead_dread_vlenb_after_rnreg, 1);
 	  NEXT_PASS (pass_cprop_hardreg, 1);
 	  NEXT_PASS (pass_fast_rtl_dce, 1);
 	  NEXT_PASS (pass_reorder_blocks, 1);
 	  NEXT_PASS (pass_leaf_regs, 1);
 	  NEXT_PASS (pass_split_before_sched2, 1);
+NEXT_PASS (pass_xthead_dvsetvl2, 1);
 	  NEXT_PASS (pass_sched2, 1);
+NEXT_PASS (pass_xthead_dvsetvl_v0p7, 1);
 	  NEXT_PASS (pass_stack_regs, 1);
 	  PUSH_INSERT_PASSES_WITHIN (pass_stack_regs)
 	      NEXT_PASS (pass_split_before_regstack, 1);
@@ -504,16 +510,12 @@ NEXT_PASS (pass_delete_redundancy_sext, 1);
 	  NEXT_PASS (pass_shorten_branches, 1);
 	  NEXT_PASS (pass_set_nothrow_function_flags, 1);
 	  NEXT_PASS (pass_dwarf2_frame, 1);
-NEXT_PASS (pass_xthead_dvsetvl, 1);
-NEXT_PASS (pass_xthead_dvsetvl2, 1);
 	  NEXT_PASS (pass_final, 1);
       POP_INSERT_PASSES ()
       NEXT_PASS (pass_df_finish, 1);
   POP_INSERT_PASSES ()
   NEXT_PASS (pass_clean_state, 1);
   TERMINATE_PASS_LIST (all_passes)
-
-
 
 /* Declaration of target-specific passes for RISC-V.
    Copyright (C) 2019 Free Software Foundation, Inc.

@@ -1557,7 +1557,7 @@ namespace std
 #define _GLIBCXX_FULLY_DYNAMIC_STRING 0
 
 /* Define if gthreads library is available. */
-/* #undef _GLIBCXX_HAS_GTHREADS */
+#define _GLIBCXX_HAS_GTHREADS 1
 
 /* Define to 1 if a full hosted library is built, or 0 if freestanding. */
 #define _GLIBCXX_HOSTED 1
@@ -1752,7 +1752,7 @@ namespace std
 /* #undef _GLIBCXX_X86_RDSEED */
 
 /* Define to 1 if mutex_timedlock is available. */
-#define _GTHREAD_USE_MUTEX_TIMEDLOCK 1
+#define _GTHREAD_USE_MUTEX_TIMEDLOCK 0
 
 /* Define for large files, on AIX-style hosts. */
 /* #undef _GLIBCXX_LARGE_FILES */

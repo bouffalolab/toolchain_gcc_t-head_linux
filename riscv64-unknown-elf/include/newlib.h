@@ -92,7 +92,7 @@
 /* #undef _NANO_FORMATTED_IO */
 
 /* Define if using retargetable functions for default lock routines.  */
-/* #undef _RETARGETABLE_LOCKING */
+#define _RETARGETABLE_LOCKING 1
 
 /* Define to use type long for time_t.  */
 /* #undef _WANT_USE_LONG_TIME_T */

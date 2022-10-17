@@ -644,6 +644,18 @@
 #endif
 
 
+/* Define if your assembler supports -misa-spec=. */
+#ifndef USED_FOR_TARGET
+#define HAVE_AS_MISA_SPEC 1
+#endif
+
+
+/* Define if your assembler supports -march=rv*_zifencei. */
+#ifndef USED_FOR_TARGET
+/* #undef HAVE_AS_MARCH_ZIFENCEI */
+#endif
+
+
 /* Define if your assembler supports relocs needed by -fpic. */
 #ifndef USED_FOR_TARGET
 /* #undef HAVE_AS_SMALL_PIC_RELOCS */
@@ -1930,7 +1942,7 @@
 
 /* Define if valgrind's valgrind/memcheck.h header is installed. */
 #ifndef USED_FOR_TARGET
-#define HAVE_VALGRIND_MEMCHECK_H 1
+/* #undef HAVE_VALGRIND_MEMCHECK_H */
 #endif
 
 

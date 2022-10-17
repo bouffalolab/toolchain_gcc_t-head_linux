@@ -12,6 +12,9 @@
 #ifndef LIBC_MUSL
 # define LIBC_MUSL 4
 #endif
+#ifndef TARGET_DEFAULT_ISA_SPEC
+# define TARGET_DEFAULT_ISA_SPEC ISA_SPEC_CLASS_2P2
+#endif
 #ifndef TARGET_RISCV_ATTRIBUTE
 # define TARGET_RISCV_ATTRIBUTE 1
 #endif
@@ -22,6 +25,7 @@
 # include "config/newlib-stdint.h"
 # include "config/riscv/riscv.h"
 # include "config/riscv/elf.h"
+# include "config/riscv/riscv-thead.h"
 # include "config/initfini-array.h"
 #endif
 #if defined IN_GCC && !defined GENERATOR_FILE && !defined USED_FOR_TARGET
